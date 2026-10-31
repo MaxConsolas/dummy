@@ -25,8 +25,16 @@ cp .env.example .env
 ```bash
 docker compose up -d
 ```
+
+### 5. Проверить на хосте
+
+```bash
+curl -v \
+  --resolve site.example.com:9443:127.0.0.1 \
+  https://site.example.com:9443
+```
  
-### 4. Настроить Xray
+### 6. Настроить Xray
  
 В конфиге Xray указать target:
  
