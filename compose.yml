@@ -1,0 +1,15 @@
+services:
+  web:
+    image: nginx:alpine
+    container_name: selfsteal-web
+    restart: always
+    environment:
+      DOMAIN: ${DOMAIN}
+    ports:
+      - "127.0.0.1:9443:443"
+    volumes:
+      - ./index.html:/usr/share/nginx/html/index.html:ro
+      - ./nginx.conf:/etc/nginx/templates/default.conf.template:ro
+      - /etc/letsencrypt:/etc/letsencrypt:ro
+    security_opt:
+      - no-new-privileges:true
